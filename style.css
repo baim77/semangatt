@@ -1,0 +1,93 @@
+body {
+    background-color: #fff0f5;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .container {
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  #envelope {
+    font-size: 60px;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  #envelope:hover {
+    transform: scale(1.1);
+  }
+  
+  #envelope p {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  #pesan {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    animation: fadeIn 1s ease;
+  }
+  
+  #pesan h1 {
+    color: #ff69b4;
+  }
+  
+  #pesan p {
+    font-size: 16px;
+    color: #444;
+  }
+  
+  .love {
+    font-size: 30px;
+    animation: pulse 1s infinite;
+    margin-top: 20px;
+    color: red;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  #bunga-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .bunga {
+    position: absolute;
+    top: -50px;
+    font-size: 24px;
+    animation-name: jatuh;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    pointer-events: none;
+    z-index: 2;
+  }
+  
+  @keyframes jatuh {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
+  }
+  

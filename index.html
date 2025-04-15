@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pesan Spesial</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fffaf4;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      z-index: 2;
+    }
+
+    /* Ganti background image dengan emoji jika gambar amplop tidak ditemukan */
+    .envelope {
+      width: 200px;
+      height: 150px;
+      background: url('amplop.png') no-repeat center/contain, #f4a261; /* Gambar amplop atau warna latar jika gambar tidak ada */
+      background-size: contain;
+      animation: shake 1s infinite;
+      margin-bottom: 10px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(2deg); }
+      50% { transform: rotate(-2deg); }
+      75% { transform: rotate(1deg); }
+    }
+
+    .click-hint {
+      font-size: 16px;
+      color: #888;
+      animation: blink 1.2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .message {
+      display: none;
+      background: #ffe4e1;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 520px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 3;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .flowers {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .flowers span {
+      position: absolute;
+      font-size: 24px;
+      animation: float 8s infinite ease-in-out;
+      opacity: 0;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="envelope" onclick="openMessage()">📩</div>
+    <div class="click-hint" id="clickHint">Klik di sini 💌</div>
+
+    <div class="message" id="messageBox">
+      <h1>Hai kamu yang keren! 😎</h1>
+      <p>
+        Aku cuma mau bilang… kamu keren banget kakk! 💪<br>
+        Ngeliat kamu jualan baso aci yang keliatan semangat banget sama saling kerjaasama antar teman teman kamu bikin ku kagum!<br><br>
+        Gak semua orang bisa ngatur waktu sama tenaga kayak kamu, apalagi sambil tetap ramah dan senyum ke semua orang, apalagi ke aku wkwkwk😄✨<br><br>
+        Btw baso aci nyaa enak banget cuyyy jadi pengin lagi… <br><br>
+        Yaaaa walaupun cuma tugas jualan sihh wkwkwkwk <br>
+        Btw semangat terus yaa kakkk apalagi ini kamu lagi ujian SEMANGATTT YAAAAA… 😼😼😼
+      </p>
+    </div>
+
+    <div class="flowers" id="flowers">
+      <!-- 20 bunga acak -->
+      <script>
+        const emojiList = ['🌸','💮','🌼','🌷','🌺','🌻','🌹'];
+        for (let i = 0; i < 30; i++) {
+          const span = document.createElement('span');
+          span.innerText = emojiList[Math.floor(Math.random() * emojiList.length)];
+          span.style.left = Math.random() * 100 + '%';
+          span.style.animationDelay = (Math.random() * 5) + 's';
+          span.style.fontSize = (Math.random() * 20 + 20) + 'px';
+          document.write(span.outerHTML);
+        }
+      </script>
+    </div>
+  </div>
+
+  <script>
+    function openMessage() {
+      document.querySelector('.envelope').style.display = 'none';
+      document.getElementById('clickHint').style.display = 'none';
+      document.getElementById('messageBox').style.display = 'block';
+      document.getElementById('flowers').style.zIndex = 0;
+    }
+  </script>
+</body>
+</html>
